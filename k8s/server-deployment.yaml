@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-deployment
+  name: server-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      component: web
+      component: server
   template:
     metadata:
-      labels: 
-        component: web
+      labels:
+        component: server
     spec:
       containers:
-        - name: client
-          image: koraxtu/multi-client
+        - name: server
+          image: koraxtu/multi-server
           ports:
-            - containerPort: 3000
+            - containerPort: 5000
           resources:
             limits:
               cpu: "500m" # 500 milliCPU (0.5 CPU cores)
